@@ -27,5 +27,5 @@ jobs:
 
       - name: Lint 
         run: | 
-          npx eslint script.js
+          npm lint:check
           echo "Lint check succesful" >> $GITHUB_STEP_SUMMARY

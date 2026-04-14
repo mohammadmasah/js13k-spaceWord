@@ -8,7 +8,8 @@
     "app:serve": "python3 -m http.server 3000",
     "test": "mocha test/**/*.js",
     "cypress:run": "npx cypress run",
-    "cypress:test": "start-server-and-test app:serve http://localhost:3000 cypress:run"
+    "cypress:test": "start-server-and-test app:serve http://localhost:3000 cypress:run",
+    "lint:check": "npx eslint script.js"
   },
   "repository": {
     "type": "git",
