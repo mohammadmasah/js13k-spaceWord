@@ -27,5 +27,5 @@ jobs:
 
       - name: Lint 
         run: | 
-          npm lint:check
+          npm run lint:check
           echo "Lint check succesful" >> $GITHUB_STEP_SUMMARY
