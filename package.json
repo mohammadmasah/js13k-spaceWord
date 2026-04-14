@@ -1,0 +1,24 @@
+{
+  "name": "js13k-spaceword",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "script.js",
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadmasah/js13k-spaceWord.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammadmasah/js13k-spaceWord/issues"
+  },
+  "homepage": "https://github.com/mohammadmasah/js13k-spaceWord#readme",
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.3.0"
+  }
+}
