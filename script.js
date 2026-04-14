@@ -43,7 +43,7 @@ function initAudio() {
 }
 //AUDIO
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   window.onload = init;
 }
 
