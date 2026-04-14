@@ -18,17 +18,14 @@ jobs:
         run: npm install
 
       - name: Unit tests
-        run: npm test
-      
-      #- name: Install
-        #run: npm ci
+        run: npx mocha test/test.js
 
       - name: Functional tests
-        run: | 
+        run: |
           npm run cypress:test
           echo "Functional tests OK" >> $GITHUB_STEP_SUMMARY
 
-      - name: Lint 
-        run: | 
+      - name: Lint
+        run: |
           npm run lint:check
           echo "Lint check successful" >> $GITHUB_STEP_SUMMARY

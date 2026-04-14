@@ -1,6 +1,10 @@
-const canvasWidth = document.getElementsByTagName('canvas')[0].clientWidth;
-const canvasHeight = document.getElementsByTagName('canvas')[0].clientHeight;
+let canvasWidth = 800;
+let canvasHeight = 600;
 
+if (typeof document !== 'undefined') {
+  canvasWidth = document.getElementsByTagName('canvas')[0].clientWidth;
+  canvasHeight = document.getElementsByTagName('canvas')[0].clientHeight;
+}
 const restitution = 0.9;
 let canvas;
 let context;
@@ -486,11 +490,4 @@ function restartStateGame() {
   lastTime = 0;
   invencibilityTime = 2000;
 }
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    getRandomInt,
-    rectIntersect,
-    circleIntersect,
-    timeToString,
-  };
-}
+export { rectIntersect, circleIntersect, timeToString, getRandomInt };

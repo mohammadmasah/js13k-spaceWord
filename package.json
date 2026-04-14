@@ -4,10 +4,9 @@
   "version": "1.0.0",
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "script.js",
-  "type": "module",
   "scripts": {
     "app:serve": "python3 -m http.server 3000",
-    "test": "mocha test/**/*.js",
+    "test": "mocha test/test.js",
     "cypress:run": "npx cypress run",
     "cypress:test": "start-server-and-test app:serve http://localhost:3000 cypress:run",
     "lint:check": "npx eslint script.js"
