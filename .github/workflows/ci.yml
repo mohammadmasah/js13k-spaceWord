@@ -14,5 +14,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Functionale tests
+      - name: Functional tests
         run: npm run cypress:test
