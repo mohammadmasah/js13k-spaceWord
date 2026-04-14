@@ -4,7 +4,8 @@
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "script.js",
   "scripts": {
-    "test": "mocha test/**/*.js"
+    "test": "mocha test/**/*.js",
+    "cypress:test": "npx cypress run"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/mohammadmasah/js13k-spaceWord#readme",
   "devDependencies": {
     "chai": "^6.2.2",
+    "cypress": "^15.13.1",
     "mocha": "^11.3.0"
   }
 }
