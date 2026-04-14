@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "script.js",
+  "type": "module",
   "scripts": {
     "app:serve": "python3 -m http.server 3000",
     "test": "mocha test/**/*.js",
@@ -23,6 +24,8 @@
   "devDependencies": {
     "chai": "^6.2.2",
     "cypress": "^15.13.1",
+    "eslint": "^10.2.0",
+    "globals": "^17.5.0",
     "mocha": "^11.3.0"
   },
   "dependencies": {

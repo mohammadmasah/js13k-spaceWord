@@ -24,3 +24,8 @@ jobs:
         run: | 
           npm run cypress:test
           echo "Functional tests ok !" >> $GITHUB_STEP_SUMMARY
+
+      - name: Lint 
+        run: | 
+          npx eslint script.js
+          echo "Lint check succesful" >> $GITHUB_STEP_SUMMARY

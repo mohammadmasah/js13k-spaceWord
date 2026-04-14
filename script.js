@@ -1,5 +1,5 @@
-const canvasWidth = document.getElementsByTagName("canvas")[0].clientWidth;
-const canvasHeight = document.getElementsByTagName("canvas")[0].clientHeight;
+const canvasWidth = document.getElementsByTagName('canvas')[0].clientWidth;
+const canvasHeight = document.getElementsByTagName('canvas')[0].clientHeight;
 
 const restitution = 0.9;
 let canvas;
@@ -10,7 +10,7 @@ let gameObjects;
 let mouseX;
 let mouseY;
 let words = [];
-let word = "";
+let word = '';
 let elapsedTime = 0;
 let timerInterval;
 let startTime;
@@ -19,16 +19,16 @@ let lastTime = 0;
 let invencibilityTime = 2000;
 let isGameBegins = false;
 let reverse = false;
-let pintinhaColor1 = "white";
-let pintinhaColor = "black";
+let pintinhaColor1 = 'white';
+let pintinhaColor = 'black';
 
 //AUDIO
 let audioCtx;
-let freqs = [261.63, 311.13, 261.63, 100, 200, 500, 415.3, 293.66];
+const freqs = [261.63, 311.13, 261.63, 100, 200, 500, 415.3, 293.66];
 function play(frequency) {
   setTimeout(() => {
-    var oscillator = audioCtx.createOscillator();
-    var gain = audioCtx.createGain();
+    const oscillator = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
     oscillator.connect(gain);
     gain.gain.value = 1 / freqs.length;
     oscillator.frequency.value = freqs[frequency];
@@ -64,17 +64,17 @@ class MainCharacter extends GameObject {
     this.height = 0;
     this.radius = 30;
 
-    canvas.addEventListener("mousemove", this.setMousePosition, false);
+    canvas.addEventListener('mousemove', this.setMousePosition, false);
   }
   draw() {
-    this.context.fillStyle = this.isColliding ? "#2C2C2C" : "#C0C0C0";
+    this.context.fillStyle = this.isColliding ? '#2C2C2C' : '#C0C0C0';
     this.context.beginPath();
     this.context.arc(mouseX, mouseY, this.radius, 0, 2 * Math.PI, false);
     this.context.fill();
 
     //Pintinha central
     this.context.beginPath();
-    context.fillStyle = "white";
+    context.fillStyle = 'white';
     this.context.arc(this.x, this.y, 7, 0, 2 * Math.PI, false);
     this.context.lineWidth = 1;
     this.context.fill();
@@ -126,12 +126,12 @@ class MainCharacter extends GameObject {
     this.x = mouseX;
     this.y = mouseY;
     if (this.lives >= 0) {
-      let liveShow = "<h1>";
+      let liveShow = '<h1>';
       for (let i = 0; i < this.lives && this.lives > 0; i++) {
-        liveShow = liveShow + "🚀";
+        liveShow = liveShow + '🚀';
       }
-      liveShow = liveShow + "</h1>";
-      document.querySelector(".lifebar").innerHTML = liveShow;
+      liveShow = liveShow + '</h1>';
+      document.querySelector('.lifebar').innerHTML = liveShow;
     }
     if (this.lives === 0) {
       isDead = true;
@@ -149,7 +149,7 @@ class MainCharacter extends GameObject {
     }
   }
   setMousePosition(e) {
-    let canvasPos = getPosition(canvas);
+    const canvasPos = getPosition(canvas);
     mouseX = e.clientX - canvasPos.x;
     mouseY = e.clientY - canvasPos.y;
   }
@@ -178,7 +178,7 @@ class Circle extends GameObject {
     this.radius = 30;
   }
   draw() {
-    this.context.fillStyle = this.isColliding ? "#F3F3F3" : "#F3F3F3";
+    this.context.fillStyle = this.isColliding ? '#F3F3F3' : '#F3F3F3';
     this.context.beginPath();
     this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
     this.context.fill();
@@ -186,21 +186,21 @@ class Circle extends GameObject {
 
     //Pintinha
     this.context.beginPath();
-    context.fillStyle = "black";
+    context.fillStyle = 'black';
     this.context.arc(this.x + 9, this.y - 8, 2, 0, 2 * Math.PI, false);
     this.context.fill();
     this.context.stroke();
 
     //Pintinha
     this.context.beginPath();
-    context.fillStyle = "black";
+    context.fillStyle = 'black';
     this.context.arc(this.x + 7, this.y + 10, 4, 0, 2 * Math.PI, false);
     this.context.fill();
     this.context.stroke();
 
     //Pintinha
     this.context.beginPath();
-    context.fillStyle = "black";
+    context.fillStyle = 'black';
     this.context.arc(this.x - 15, this.y, 7, 0, 2 * Math.PI, false);
     this.context.fill();
   }
@@ -213,20 +213,20 @@ class Circle extends GameObject {
 function init() {
   initAudio();
 
-  canvas = document.getElementById("canvas");
-  context = canvas.getContext("2d");
+  canvas = document.getElementById('canvas');
+  context = canvas.getContext('2d');
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
   createWorld();
   word = words[0];
   document.addEventListener(
-    "keydown",
+    'keydown',
     (event) => {
       if (event.key === word[0]) {
-        word = word.split(""); // or newStr = [...str];
+        word = word.split(''); // or newStr = [...str];
         word.shift();
-        word = word.join("");
-        if (word.length == 0) {
+        word = word.join('');
+        if (word.length === 0) {
           words.splice(0, 1);
           word = words[0];
           gameObjects.splice(1, 1);
@@ -245,12 +245,12 @@ function createWorld() {
   setInterval(function () {
     if (reverse) {
       reverse = false;
-      pintinhaColor = "white";
-      pintinhaColor1 = "black";
+      pintinhaColor = 'white';
+      pintinhaColor1 = 'black';
     } else {
       reverse = true;
-      pintinhaColor1 = "white";
-      pintinhaColor = "black";
+      pintinhaColor1 = 'white';
+      pintinhaColor = 'black';
     }
   }, 3000);
   gameObjects = [new MainCharacter(context, mouseX, mouseY, 50, -50)];
@@ -264,10 +264,10 @@ function createWorld() {
   }, 3000);
 }
 
-const characters = "abcdefghijklmnopqrstuvwxyz";
+const characters = 'abcdefghijklmnopqrstuvwxyz';
 
 function generateString(length) {
-  let result = "";
+  let result = '';
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -331,17 +331,17 @@ function detectCollisions() {
         obj1.isColliding = true;
         obj2.isColliding = true;
 
-        let vCollision = { x: obj2.x - obj1.x, y: obj2.y - obj1.y };
-        let distance = Math.sqrt(
+        const vCollision = { x: obj2.x - obj1.x, y: obj2.y - obj1.y };
+        const distance = Math.sqrt(
           (obj2.x - obj1.x) * (obj2.x - obj1.x) +
             (obj2.y - obj1.y) * (obj2.y - obj1.y),
         );
-        let vCollisionNorm = {
+        const vCollisionNorm = {
           x: vCollision.x / distance,
           y: vCollision.y / distance,
         };
-        let vRelativeVelocity = { x: obj1.vx - obj2.vx, y: obj1.vy - obj2.vy };
-        let speed =
+        const vRelativeVelocity = { x: obj1.vx - obj2.vx, y: obj1.vy - obj2.vy };
+        const speed =
           vRelativeVelocity.x * vCollisionNorm.x +
           vRelativeVelocity.y * vCollisionNorm.y;
         if (speed < 0) {
@@ -365,7 +365,7 @@ function rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) {
 
 //TODO - Isso precisará mesclar entre circulo e retangulo
 function circleIntersect(x1, y1, r1, x2, y2, r2) {
-  let squareDistance = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+  const squareDistance = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
   return squareDistance <= (r1 + r2) * (r1 + r2);
 }
 
@@ -393,8 +393,8 @@ function detectEdgeCollisions() {
 
 function gameLoop(timeStamp) {
   if (isGameBegins) {
-    document.getElementsByTagName("nav")[0].style.visibility = "hidden";
-    document.getElementsByTagName("canvas")[0].style.cursor = "none";
+    document.getElementsByTagName('nav')[0].style.visibility = 'hidden';
+    document.getElementsByTagName('canvas')[0].style.cursor = 'none';
     if (!isDead) {
       secondsPassed = (timeStamp - oldTimeStamp) / 1000;
       oldTimeStamp = timeStamp;
@@ -410,32 +410,32 @@ function gameLoop(timeStamp) {
           createAnEnemy();
           word = words[0];
         }
-        html = "<h1>" + word + "</h1>";
+        html = '<h1>' + word + '</h1>';
 
         timerInterval = setInterval(function printTime() {
           if (!isDead) {
             elapsedTime = Date.now() - startTime;
           }
         }, 10);
-        timer = "<h1>" + timeToString(elapsedTime) + "</h1>";
-        document.querySelector(".text").innerHTML = html;
-        document.querySelector(".cronometer").innerHTML = timer;
+        timer = '<h1>' + timeToString(elapsedTime) + '</h1>';
+        document.querySelector('.text').innerHTML = html;
+        document.querySelector('.cronometer').innerHTML = timer;
         gameObjects[i].draw();
       }
       window.requestAnimationFrame(gameLoop);
     } else {
       clearCanvas();
-      document.getElementsByClassName("text")[0].innerHTML = "";
-      document.getElementsByClassName("cronometer")[0].innerHTML = "";
-      document.getElementById("retry").style.visibility = "visible";
-      document.getElementsByTagName("canvas")[0].style.cursor = "default";
-      document.querySelector(".timefinish").innerHTML = timer;
+      document.getElementsByClassName('text')[0].innerHTML = '';
+      document.getElementsByClassName('cronometer')[0].innerHTML = '';
+      document.getElementById('retry').style.visibility = 'visible';
+      document.getElementsByTagName('canvas')[0].style.cursor = 'default';
+      document.querySelector('.timefinish').innerHTML = timer;
     }
   }
 }
 
 function beginGame() {
-  document.getElementById("retry").style.visibility = "hidden";
+  document.getElementById('retry').style.visibility = 'hidden';
   isGameBegins = true;
   isDead = false;
   elapsedTime = 0;
@@ -445,21 +445,21 @@ function beginGame() {
 
 function timeToString(time) {
   //TODO - Entendi nada não mas tamo ai - https://tinloof.com/blog/how-to-build-a-stopwatch-with-html-css-js-react-part-2/
-  let diffInHrs = time / 3600000;
-  let hh = Math.floor(diffInHrs);
+  const diffInHrs = time / 3600000;
+  const hh = Math.floor(diffInHrs);
 
-  let diffInMin = (diffInHrs - hh) * 60;
-  let mm = Math.floor(diffInMin);
+  const diffInMin = (diffInHrs - hh) * 60;
+  const mm = Math.floor(diffInMin);
 
-  let diffInSec = (diffInMin - mm) * 60;
-  let ss = Math.floor(diffInSec);
+  const diffInSec = (diffInMin - mm) * 60;
+  const ss = Math.floor(diffInSec);
 
-  let diffInMs = (diffInSec - ss) * 100;
-  let ms = Math.floor(diffInMs);
+  const diffInMs = (diffInSec - ss) * 100;
+  const ms = Math.floor(diffInMs);
 
-  let formattedMM = mm.toString().padStart(2, "0");
-  let formattedSS = ss.toString().padStart(2, "0");
-  let formattedMS = ms.toString().padStart(2, "0");
+  const formattedMM = mm.toString().padStart(2, '0');
+  const formattedSS = ss.toString().padStart(2, '0');
+  const formattedMS = ms.toString().padStart(2, '0');
 
   return `${formattedMM}:${formattedSS}:${formattedMS}`;
 }
@@ -469,7 +469,7 @@ function clearCanvas() {
 }
 
 function sike() {
-  alert("do you really think that i'll let you go easy? PLAY THE GAME!");
+  alert('do you really think that i ll let you go easy? PLAY THE GAME!');
 }
 
 function restartStateGame() {
@@ -477,14 +477,14 @@ function restartStateGame() {
   oldTimeStamp = 0;
   gameObjects;
   words = [];
-  word = "";
+  word = '';
   elapsedTime = 0;
   timerInterval;
   startTime;
   lastTime = 0;
   invencibilityTime = 2000;
 }
-if (typeof module !== "undefined" && module.exports) {
+if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     getRandomInt,
     rectIntersect,
