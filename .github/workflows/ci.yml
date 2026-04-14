@@ -17,12 +17,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install
+        run: npm ci
+
       - name: Unit tests
         run: npx mocha test/test.js
 
       - name: Functional tests
         run: |
-          npm install ci
           npm run cypress:test
           echo "Functional tests OK" >> $GITHUB_STEP_SUMMARY
 
