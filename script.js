@@ -295,7 +295,7 @@ function createAnEnemy() {
   );
 }
 
-function getRandomInt(min, max) {
+export function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
 
@@ -362,7 +362,7 @@ function detectCollisions() {
   }
 }
 
-function rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) {
+export function rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) {
   if (x2 > w1 + x1 || x1 > w2 + x2 || y2 > h1 + y1 || y1 > h2 + y2) {
     return false;
   }
@@ -370,7 +370,7 @@ function rectIntersect(x1, y1, w1, h1, x2, y2, w2, h2) {
 }
 
 //TODO - Isso precisará mesclar entre circulo e retangulo
-function circleIntersect(x1, y1, r1, x2, y2, r2) {
+export function circleIntersect(x1, y1, r1, x2, y2, r2) {
   const squareDistance = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
   return squareDistance <= (r1 + r2) * (r1 + r2);
 }
@@ -416,14 +416,14 @@ function gameLoop(timeStamp) {
           createAnEnemy();
           word = words[0];
         }
-        html = '<h1>' + word + '</h1>';
+        const html = '<h1>' + word + '</h1>';
 
         timerInterval = setInterval(function printTime() {
           if (!isDead) {
             elapsedTime = Date.now() - startTime;
           }
         }, 10);
-        timer = '<h1>' + timeToString(elapsedTime) + '</h1>';
+        const timer = '<h1>' + timeToString(elapsedTime) + '</h1>';
         document.querySelector('.text').innerHTML = html;
         document.querySelector('.cronometer').innerHTML = timer;
         gameObjects[i].draw();
@@ -449,7 +449,7 @@ function beginGame() {
   init();
 }
 
-function timeToString(time) {
+export function timeToString(time) {
   //TODO - Entendi nada não mas tamo ai - https://tinloof.com/blog/how-to-build-a-stopwatch-with-html-css-js-react-part-2/
   const diffInHrs = time / 3600000;
   const hh = Math.floor(diffInHrs);
@@ -490,4 +490,6 @@ function restartStateGame() {
   lastTime = 0;
   invencibilityTime = 2000;
 }
-export { rectIntersect, circleIntersect, timeToString, getRandomInt };
+if (typeof window !== 'undefined') {
+  window.beginGame = beginGame;
+}
