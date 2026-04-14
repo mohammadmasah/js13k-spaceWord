@@ -43,7 +43,9 @@ function initAudio() {
 }
 //AUDIO
 
-window.onload = init;
+if (typeof window !== "undefined") {
+  window.onload = init;
+}
 
 class GameObject {
   constructor(context, x, y, vx, vy) {
