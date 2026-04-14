@@ -4,8 +4,13 @@
   "version": "1.0.0",
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "script.js",
+  "type": "module",
   "scripts": {
-    "test": "mocha test/**/*.js"
+    "app:serve": "python3 -m http.server 3000",
+    "test": "mocha test/**/*.js",
+    "cypress:run": "npx cypress run",
+    "cypress:test": "start-server-and-test app:serve http://localhost:3000 cypress:run",
+    "lint:check": "npx eslint script.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +25,12 @@
   "homepage": "https://github.com/mohammadmasah/js13k-spaceWord#readme",
   "devDependencies": {
     "chai": "^6.2.2",
-    "mocha": "^11.3.0"
+    "cypress": "^15.13.1",
+    "eslint": "^10.2.0",
+    "globals": "^17.5.0",
+    "mocha": "^11.7.5"
+  },
+  "dependencies": {
+    "start-server-and-test": "^3.0.2"
   }
 }
