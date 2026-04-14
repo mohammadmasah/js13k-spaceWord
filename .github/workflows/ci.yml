@@ -18,10 +18,11 @@ jobs:
         run: npm install
 
       - name: Unit tests
-        run: npm test
+        run: npx mocha test/test.js
 
       - name: Functional tests
         run: |
+          npm install ci
           npm run cypress:test
           echo "Functional tests OK" >> $GITHUB_STEP_SUMMARY
 
