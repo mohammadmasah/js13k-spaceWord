@@ -23,9 +23,9 @@ jobs:
       - name: Functional tests
         run: | 
           npm run cypress:test
-          echo "Functional tests ok !" >> $GITHUB_STEP_SUMMARY
+          echo "Functional tests OK" >> $GITHUB_STEP_SUMMARY
 
       - name: Lint 
         run: | 
           npm run lint:check
-          echo "Lint check succesful" >> $GITHUB_STEP_SUMMARY
+          echo "Lint check successful" >> $GITHUB_STEP_SUMMARY

@@ -27,7 +27,7 @@
     "cypress": "^15.13.1",
     "eslint": "^10.2.0",
     "globals": "^17.5.0",
-    "mocha": "^11.3.0"
+    "mocha": "^11.7.5"
   },
   "dependencies": {
     "start-server-and-test": "^3.0.2"
